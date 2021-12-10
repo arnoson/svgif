@@ -1,0 +1,5 @@
+.svgif-frame {
+  visibility: hidden;
+  animation: var(--animation) var(--animation-duration) linear var(--delay)
+    var(--animation-iteration-count);
+}
