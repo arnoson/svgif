@@ -10,7 +10,7 @@ npm i svgif
 
 ## Usage
 
-`svgif` treats all direct children of `<svg>` as the frames for the animation and will show on after the other.
+`svgif` treats all direct children of `<svg>` as the frames for the animation and will show one after the other.
 
 ```html
 <svg id="my-svg">
