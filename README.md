@@ -28,7 +28,7 @@ svgif(document.querySelector('#my-svg'))
 
 ## API
 
-```js
+```ts
 svgif(svg: SVGElement, {
   frameDuration = 500, // Duration for each frame. Can be overwritten for individual frames (see: #Tweak SVG).
   loop = true // Wether or not to loop the animation.
