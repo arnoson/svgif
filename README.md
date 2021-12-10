@@ -1,4 +1,4 @@
-# SVGIF
+# 💫 SVGIF
 
 Animate SVG layers like gifs!
 
