@@ -12,7 +12,7 @@
     "dev": "tsup src/index.ts src/index.css --format esm --watch",
     "build": "tsup src/index.ts src/index.css --format esm --minify --dts",
     "prepublishOnly": "npm run build",
-    "release": "np --no-2fa --no-test"
+    "release": "np --no-2fa --no-tests"
   },
   "keywords": [
     "svg",
