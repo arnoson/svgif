@@ -12,17 +12,3 @@ export const setSVGStyle = (svg: SVGElement, style: string) => {
   }
   styleSheet.textContent = style
 }
-
-export const createFrameAnimation = (
-  frameDuration: number,
-  animationDuration: number
-) => `@keyframes svgif-frame-${frameDuration}-ms {
-  0%,
-  ${(frameDuration / animationDuration) * 100}% {
-    visibility: visible;
-  }
-  ${((frameDuration + 1) / animationDuration) * 100}%,
-  100% {
-    visibility: hidden;
-  }
-}`

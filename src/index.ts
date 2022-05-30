@@ -1,15 +1,27 @@
-import {
-  createFrameAnimation,
-  getFrameDuration,
-  setSVGStyle,
-  shouldIgnoreFrame,
-} from './utils'
+import { getFrameDuration, setSVGStyle, shouldIgnoreFrame } from './utils'
+
+const createFrameAnimation = (
+  frameDuration: number,
+  animationDuration: number
+) => `@keyframes svgif-frame-${frameDuration}-ms {
+  0%,
+  ${(frameDuration / animationDuration) * 100}% {
+    visibility: visible;
+  }
+  ${((frameDuration + 1) / animationDuration) * 100}%,
+  100% {
+    visibility: hidden;
+  }
+}`
 
 export default function svgif(
   svg: SVGElement,
   { frameDuration = 500, loop = true, clone = false } = {}
 ) {
   svg = clone ? (svg.cloneNode(true) as SVGElement) : svg
+  svg.classList.add('svgif')
+  svg.toggleAttribute('data-loop', loop)
+
   const frames = Array.from(svg.children) as HTMLElement[]
   const differentFrameDurations = new Set() as Set<number>
   let animationDuration = 0
