@@ -10,9 +10,7 @@
   "types": "dist/index.d.ts",
   "scripts": {
     "dev": "tsup src/index.ts src/index.css --format esm --watch",
-    "build": "tsup src/index.ts src/index.css --format esm --minify --dts",
-    "prepublishOnly": "npm run build",
-    "release": "np --no-2fa --no-tests"
+    "build": "tsup src/index.ts src/index.css --format esm --minify --dts"
   },
   "keywords": [
     "svg",
@@ -23,7 +21,6 @@
   "author": "arnoson",
   "license": "MIT",
   "devDependencies": {
-    "np": "^7.6.1",
-    "tsup": "^5.7.1"
+    "tsup": "^8.3.5"
   }
 }
