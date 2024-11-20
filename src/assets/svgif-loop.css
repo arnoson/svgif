@@ -1,6 +1,6 @@
 /* Created with svgif (github.com/arnoson/svgif): a web based editor to animate svgs like gifs */
 
-.svgif[data-state='paused'] .svgif-frame {
+.svgif[data-svgif-state='paused'] .svgif-frame {
   animation-play-state: paused;
 }
 

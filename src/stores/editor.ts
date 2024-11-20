@@ -46,7 +46,7 @@ export const useEditor = defineStore('editor', () => {
     for (const frame of frames.value) {
       // Mark disabled frames with a data attribute so we can reconstruct it
       // again when loading the file.
-      frame.el.toggleAttribute('data-svgif-ignore', !frame.enabled)
+      frame.el.toggleAttribute('data-svgif-disabled', !frame.enabled)
       frame.el.classList.toggle('svgif-frame', frame.enabled)
       frame.el.classList.remove('svgif-last-frame')
       if (!frame.enabled) continue
@@ -87,8 +87,11 @@ export const useEditor = defineStore('editor', () => {
     style.value = `${baseStyle}\n${frameAnimations}`
   })
 
-  effect(() => svg.value?.setAttribute('data-state', state.value))
   effect(() => styleSheet.value && (styleSheet.value.textContent = style.value))
+  effect(() => svg.value?.setAttribute('data-svgif-state', state.value))
+  // Store loop as a data attribute so we can reconstruct it again when loading
+  // the file.
+  effect(() => svg.value?.toggleAttribute('data-svgif-loop', loop.value))
 
   const load = (code: string) => {
     const doc = parser.parseFromString(code, 'image/svg+xml')
@@ -99,6 +102,7 @@ export const useEditor = defineStore('editor', () => {
     // Prepare the svg and frames.
     svg.value = el
     el.classList.add('svgif')
+    loop.value = el.hasAttribute('data-svgif-loop')
 
     // Cleanup.
     el.querySelector('style[data-svgif-style]')?.remove()
@@ -123,7 +127,7 @@ export const useEditor = defineStore('editor', () => {
       previewEl.classList.add('svgif-frame-preview')
       previewEl.append(el.cloneNode(true))
 
-      const enabled = !el.hasAttribute('data-svgif-ignore')
+      const enabled = !el.hasAttribute('data-svgif-disabled')
       el.classList.toggle('svgif-frame', enabled)
 
       const durationAttr = el.dataset.svgifDuration
