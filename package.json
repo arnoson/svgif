@@ -1,26 +1,30 @@
 {
-  "name": "svgif",
-  "version": "0.1.0",
-  "description": "Animate SVG layers like gifs!",
-  "main": "dist/index.js",
-  "files": [
-    "dist"
-  ],
+  "name": "svgif-editor",
+  "version": "0.0.0",
+  "private": true,
   "type": "module",
-  "types": "dist/index.d.ts",
   "scripts": {
-    "dev": "tsup src/index.ts src/index.css --format esm --watch",
-    "build": "tsup src/index.ts src/index.css --format esm --minify --dts"
+    "dev": "vite",
+    "build": "run-p type-check \"build-only {@}\" --",
+    "preview": "vite preview",
+    "build-only": "vite build",
+    "type-check": "vue-tsc --build --force"
   },
-  "keywords": [
-    "svg",
-    "animation",
-    "gif",
-    "frames"
-  ],
-  "author": "arnoson",
-  "license": "MIT",
+  "dependencies": {
+    "@heroicons/vue": "^2.2.0",
+    "pinia": "^2.2.6",
+    "radix-vue": "^1.9.9",
+    "vue": "^3.5.12",
+    "vue3-dropzone": "^2.2.1"
+  },
   "devDependencies": {
-    "tsup": "^8.3.5"
+    "@tsconfig/node22": "^22.0.0",
+    "@types/node": "^22.9.0",
+    "@vitejs/plugin-vue": "^5.1.4",
+    "@vue/tsconfig": "^0.5.1",
+    "npm-run-all2": "^7.0.1",
+    "typescript": "~5.6.3",
+    "vite": "^5.4.10",
+    "vue-tsc": "^2.1.10"
   }
 }

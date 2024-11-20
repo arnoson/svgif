@@ -1,63 +1,33 @@
-# 💫 SVGIF
+# svgif-editor
 
-Animate SVG layers like gifs!
+This template should help get you started developing with Vue 3 in Vite.
 
-## Installation
+## Recommended IDE Setup
 
-```
-npm i svgif
-```
+[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
 
-## Usage
+## Type Support for `.vue` Imports in TS
 
-`svgif` treats all direct children of `<svg>` as the frames for the animation and will show one after the other.
+TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
 
-```html
-<svg id="my-svg">
-  <rect width="100" height="100" fill="red" />
-  <rect width="100" height="100" fill="green" />
-  <rect width="100" height="100" fill="blue" />
-</svg>
-```
+## Customize configuration
 
-```js
-import svgif from 'svgif'
-import 'svgif/dist/index.css'
-svgif(document.querySelector('#my-svg'))
+See [Vite Configuration Reference](https://vite.dev/config/).
+
+## Project Setup
+
+```sh
+npm install
 ```
 
-## API
+### Compile and Hot-Reload for Development
 
-```ts
-svgif(svg: SVGElement, {
-  frameDuration = 500, // Duration for each frame. Can be overwritten for individual frames (see: #Tweak SVG).
-  loop = true // Wether or not to loop the animation.
-  clone = false // If enabled, the input svg will not be mutated and a copy is returned instead.
-}): SVGElement
+```sh
+npm run dev
 ```
 
-## Tweak SVG
+### Type-Check, Compile and Minify for Production
 
-You can tweak the animation directly within the SVG. All options that are specified via an `data-` attribute can also be set via the element's id. This makes it easy to fine tune the animation inside a graphic software where you usually can only change the name (id) of a layer.
-
-```html
-<!-- These two are the same: -->
-<rect data-duration="2000" />
-<rect id="duration-2000" />
-<!-- It even works if your graphic software adds a suffix to the id during export. -->
-<rect id="duration-2000_2" />
-```
-
-### Frame Duration
-
-```html
-<!-- ... other frames ... -->
-<rect width="100" height="100" fill="blue" data-duration="2000" />
-```
-
-### Ignore Frame
-
-```html
-<!-- ... other frames ... -->
-<rect width="100" height="100" fill="blue" data-ignore />
+```sh
+npm run build
 ```

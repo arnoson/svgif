@@ -1,0 +1,25 @@
+.field {
+  --field-gap: 0.5rem;
+
+  display: grid;
+  grid-template-columns: 11ch 1fr;
+  gap: var(--field-gap);
+  align-items: center;
+
+  label {
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+}
+
+.field[data-layout='inline'] {
+  --field-gap: 0.25rem;
+
+  display: flex;
+  gap: var(--field-gap);
+  align-items: center;
+
+  input {
+    field-sizing: content;
+  }
+}

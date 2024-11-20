@@ -1,0 +1,25 @@
+/* Created with svgif (github.com/arnoson/svgif): a web based editor to animate svgs like gifs */
+
+.svgif[data-state-paused='paused'] .svgif-frame {
+  animation-play-state: paused;
+}
+
+.svgif-frame {
+  visibility: hidden;
+  animation: var(--animation) var(--animation-duration) linear var(--delay)
+    var(--animation-iteration-count);
+}
+
+.svgif-last-frame {
+  animation-name: svgif-last-frame;
+  animation-fill-mode: forwards;
+}
+
+@keyframes svgif-last-frame {
+  0% {
+    visibility: visible;
+  }
+  100% {
+    visibility: visible;
+  }
+}
